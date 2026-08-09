@@ -37,6 +37,10 @@ with st.sidebar:
     st.markdown("---")
     st.subheader("⚙️ Sistem Parametreleri")
     use_llm = st.toggle("Yerel LLM Kullan", value=True, help="LLM yanıtını aktifleştirir. Devre dışı bırakılırsa sadece bağlam (retrieval) getirilir.")
+    if st.button("🔄 Önbelleği Temizle ve Yenile", use_container_width=True):
+        st.cache_resource.clear()
+        st.rerun()
+
     
     st.markdown("---")
     st.markdown("""
