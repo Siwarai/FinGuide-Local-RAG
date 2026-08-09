@@ -1,6 +1,6 @@
 {
   "search_paths": [
     ".",
-    "src"
+    ".venv/Lib/site-packages"
   ]
 }

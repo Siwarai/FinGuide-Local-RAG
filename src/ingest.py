@@ -3,9 +3,9 @@ import glob
 import uuid
 from pypdf import PdfReader
 
-from src.config import CHUNK_SIZE, CHUNK_OVERLAP
-from src.embedding import Embedder
-from src.vector_store import VectorStore
+from src.config import CHUNK_SIZE, CHUNK_OVERLAP  # pyrefly: ignore [missing-import]
+from src.embedding import Embedder  # pyrefly: ignore [missing-import]
+from src.vector_store import VectorStore  # pyrefly: ignore [missing-import]
 
 DOCS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "documents")
 
@@ -23,19 +23,23 @@ def read_pdf(file_path):
 
 def read_txt(file_path):
     try:
-        with open(file_path, "r", encoding="utf-8") as f:
+        with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
             return f.read()
     except Exception as e:
         print(f"Error reading TXT {file_path}: {e}")
         return ""
 
 def chunk_text(text, chunk_size, chunk_overlap):
+    if not text:
+        return []
     chunks = []
     start = 0
+    step = max(1, chunk_size - chunk_overlap)
     while start < len(text):
         end = start + chunk_size
-        chunks.append(text[start:end])
-        start += chunk_size - chunk_overlap
+        chunk = text[start:end]
+        chunks.append(chunk)
+        start += step
     return chunks
 
 def ingest_documents():

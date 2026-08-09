@@ -1,5 +1,5 @@
 from sentence_transformers import SentenceTransformer
-from src.config import EMBEDDING_MODEL
+from src.config import EMBEDDING_MODEL  # pyrefly: ignore [missing-import]
 
 class Embedder:
     def __init__(self):

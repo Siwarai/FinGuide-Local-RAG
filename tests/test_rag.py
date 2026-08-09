@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from src.rag import RAGPipeline, FALLBACK_MESSAGE
+from src.rag import RAGPipeline, FALLBACK_MESSAGE  # pyrefly: ignore [missing-import]
 
 def test_rag_pipeline_initialization():
     pipeline = RAGPipeline()

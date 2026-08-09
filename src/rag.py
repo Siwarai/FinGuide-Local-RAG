@@ -1,6 +1,8 @@
 import argparse
-from src.retriever import Retriever
-from src.foundry_client import FoundryClient
+from src.retriever import Retriever  # pyrefly: ignore [missing-import]
+from src.foundry_client import FoundryClient  # pyrefly: ignore [missing-import]
+
+from src.config import FOUNDRY_BASE_URL  # pyrefly: ignore [missing-import]
 
 # FR-14 & NFR-03: Deterministik güvenli fallback mesajı
 FALLBACK_MESSAGE = "Üzgünüm, bilgi tabanımda bu soruya yanıt verecek yeterli finansal kaynak bulamadım."
@@ -10,7 +12,7 @@ Görevin, yalnızca sana verilen bağlam (context) bilgilerini kullanarak kullan
 Sana verilen bağlam içerisinde cevabı bulunmayan sorular için uydurma bilgiler üretme, sadece verilen kaynaklara sadık kal."""
 
 class RAGPipeline:
-    def __init__(self, base_url="http://localhost:8000/v1"):
+    def __init__(self, base_url=FOUNDRY_BASE_URL):
         self.retriever = Retriever()
         self.foundry_client = FoundryClient(base_url=base_url)
         

@@ -1,7 +1,7 @@
 import argparse
-from src.config import TOP_K, MIN_RETRIEVAL_SCORE
-from src.embedding import Embedder
-from src.vector_store import VectorStore
+from src.config import TOP_K, MIN_RETRIEVAL_SCORE  # pyrefly: ignore [missing-import]
+from src.embedding import Embedder  # pyrefly: ignore [missing-import]
+from src.vector_store import VectorStore  # pyrefly: ignore [missing-import]
 
 class Retriever:
     def __init__(self):

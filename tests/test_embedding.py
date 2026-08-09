@@ -1,6 +1,6 @@
 import pytest
-from src.embedding import Embedder
-from src.config import EMBEDDING_DIM
+from src.embedding import Embedder  # pyrefly: ignore [missing-import]
+from src.config import EMBEDDING_DIM  # pyrefly: ignore [missing-import]
 
 def test_embedder_query():
     embedder = Embedder()

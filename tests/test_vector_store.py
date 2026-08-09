@@ -1,6 +1,6 @@
 import pytest
 import uuid
-from src.vector_store import VectorStore
+from src.vector_store import VectorStore  # pyrefly: ignore [missing-import]
 
 def test_vector_store_operations():
     vs = VectorStore()

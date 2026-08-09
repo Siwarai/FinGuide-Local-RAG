@@ -14,7 +14,7 @@ from src.rag import RAGPipeline  # pyrefly: ignore [missing-import]
 # -----------------------------------------------------------------------------
 st.set_page_config(
     page_title="FinGuide AI - Akıllı Finansal Asistan",
-    page_icon="📈",
+    page_icon=":chart_with_upwards_trend:",
     layout="wide",
     initial_sidebar_state="expanded"
 )

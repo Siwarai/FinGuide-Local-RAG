@@ -1,6 +1,6 @@
 import requests
 import json
-from src.config import LLM_MODEL, FOUNDRY_BASE_URL
+from src.config import LLM_MODEL, FOUNDRY_BASE_URL  # pyrefly: ignore [missing-import]
 
 class FoundryClient:
     def __init__(self, base_url=FOUNDRY_BASE_URL):
@@ -11,7 +11,8 @@ class FoundryClient:
     def is_available(self) -> bool:
         """Sunucunun erişilebilir olup olmadığını kontrol eder."""
         try:
-            res = requests.get(f"{self.base_url}/models", timeout=3)
+            url = f"{self.base_url.rstrip('/')}/models"
+            res = requests.get(url, timeout=3)
             return res.status_code == 200
         except Exception:
             return False
@@ -22,14 +23,15 @@ class FoundryClient:
         Yerel Foundry / OpenAI uyumlu LLM modelinden cevap üretir (FR-11).
         Bağlantı kurulamazsa None döndürür.
         """
+        clean_base = self.base_url.rstrip('/') if self.base_url else ""
         endpoints_to_try = [
-            self.base_url,
+            clean_base,
             "http://localhost:8000/v1",
             "http://localhost:11434/v1"  # Ollama OpenAI-compatible endpoint
         ]
         
         seen = set()
-        unique_endpoints = [e for e in endpoints_to_try if not (e in seen or seen.add(e))]
+        unique_endpoints = [e for e in endpoints_to_try if e and not (e in seen or seen.add(e))]
         
         user_content = f"Aşağıdaki bağlam bilgisini kullanarak soruyu cevapla.\n\nBağlam (Context):\n{context}\n\nSoru: {query}"
         
@@ -56,11 +58,12 @@ class FoundryClient:
                 data = response.json()
                 answer = data["choices"][0]["message"]["content"]
                 return answer
-            except requests.exceptions.RequestException:
+            except (requests.exceptions.RequestException, KeyError, IndexError, json.JSONDecodeError):
                 continue
                 
         print("Foundry Local veya alternatif LLM sunucularına erişilemedi.")
         return None
+
 
 
 

@@ -1,6 +1,6 @@
 import pytest
-from src.retriever import Retriever
-from src.config import MIN_RETRIEVAL_SCORE
+from src.retriever import Retriever  # pyrefly: ignore [missing-import]
+from src.config import MIN_RETRIEVAL_SCORE  # pyrefly: ignore [missing-import]
 
 def test_retriever_initialization():
     retriever = Retriever()

@@ -1,7 +1,7 @@
 import pytest
 import os
 import tempfile
-from src.ingest import chunk_text, read_txt
+from src.ingest import chunk_text, read_txt  # pyrefly: ignore [missing-import]
 
 def test_chunk_text():
     text = "A" * 1000

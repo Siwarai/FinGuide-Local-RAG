@@ -6,7 +6,14 @@ readme = "README.md"
 requires-python = ">=3.10"
 
 [tool.pyrefly]
-search_paths = [".", "src"]
+search_paths = [".", ".venv/Lib/site-packages"]
 
 [tool.pyright]
-extraPaths = [".", "src"]
+venvPath = "."
+venv = ".venv"
+extraPaths = [".", ".venv/Lib/site-packages"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+

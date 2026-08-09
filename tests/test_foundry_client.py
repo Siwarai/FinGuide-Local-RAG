@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from src.foundry_client import FoundryClient
+from src.foundry_client import FoundryClient  # pyrefly: ignore [missing-import]
 
 def test_foundry_client_initialization():
     client = FoundryClient()
