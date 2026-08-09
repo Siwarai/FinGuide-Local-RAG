@@ -57,12 +57,37 @@ class RAGPipeline:
             query=query
         )
         
+        # Eğer yerel LLM sunucusu çevrimdışı ise, retriever verilerini kullanarak Akıllı Bağlam Yanıtı oluştur (Graceful Fallback)
+        if answer is None:
+            answer = self._generate_smart_extraction(retrieved_results, query)
+        
         # FR-12: Bütünleşik sözlük çıktısı
         return {
             "answer": answer,
             "sources": sources_info,
             "has_context": True
         }
+
+    def _generate_smart_extraction(self, retrieved_results: list, query: str) -> str:
+        """
+        Yerel LLM sunucusu çevrimdışı olduğunda, bulunan en alakalı kaynak parçalarını (chunk)
+        süzerek şablon tabanlı akıllı ve anlamlı bir yanıt (Graceful Fallback / Smart Extraction) oluşturur.
+        """
+        top_result = retrieved_results[0]
+        top_chunk = top_result["chunk"].strip()
+        top_source = top_result["metadata"].get("source", "Finansal Bilgi Tabanı Dokümanı")
+        top_score = top_result["score"] * 100
+
+        formatted_answer = (
+            f"### **Finansal Bilgi Tabanı Doğrudan Yanıtı** *(Akıllı Bağlam Süzgeci)*\n\n"
+            f"{top_chunk}\n\n"
+            f"---\n"
+            f"*Not: Yerel LLM sunucu bağlantısı çevrimdışı olduğu için bu yanıt, `{top_source}` dokümanından "
+            f"**%{top_score:.1f}** benzerlik skoru ile doğrudan süzülerek sunulmuştur.*"
+        )
+        return formatted_answer
+
+
 
 if __name__ == "__main__":
     # FR-17: CLI Test Desteği

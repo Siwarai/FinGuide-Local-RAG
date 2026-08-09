@@ -19,11 +19,18 @@ class FoundryClient:
     def generate_answer(self, system_prompt, context, query):
         """
         Retriever'dan gelen bağlamı (context) ve kullanıcı sorusunu (query) kullanarak
-        Yerel Foundry LLM modelinden cevap üretir (FR-11).
+        Yerel Foundry / OpenAI uyumlu LLM modelinden cevap üretir (FR-11).
+        Bağlantı kurulamazsa None döndürür.
         """
-        endpoint = f"{self.base_url}/chat/completions"
+        endpoints_to_try = [
+            self.base_url,
+            "http://localhost:8000/v1",
+            "http://localhost:11434/v1"  # Ollama OpenAI-compatible endpoint
+        ]
         
-        # Prompt'u bağlam ve soru ile birleştiriyoruz
+        seen = set()
+        unique_endpoints = [e for e in endpoints_to_try if not (e in seen or seen.add(e))]
+        
         user_content = f"Aşağıdaki bağlam bilgisini kullanarak soruyu cevapla.\n\nBağlam (Context):\n{context}\n\nSoru: {query}"
         
         payload = {
@@ -32,27 +39,29 @@ class FoundryClient:
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_content}
             ],
-            "temperature": 0.3, # Daha tutarlı ve deterministik cevaplar için
+            "temperature": 0.3,
             "max_tokens": 1024
         }
         
-        try:
-            response = requests.post(
-                endpoint, 
-                json=payload, 
-                headers={"Content-Type": "application/json"},
-                timeout=15
-            )
-            response.raise_for_status()
-            data = response.json()
-            
-            # OpenAI API formatındaki yanıtı parse et
-            answer = data["choices"][0]["message"]["content"]
-            return answer
-            
-        except requests.exceptions.RequestException as e:
-            print(f"Foundry Local API Bağlantı Hatası: {e}")
-            return "Üzgünüm, şu anda yerel model sunucusuna (Foundry) bağlanamadığım için yanıt üretemiyorum."
+        for base in unique_endpoints:
+            endpoint = f"{base}/chat/completions"
+            try:
+                response = requests.post(
+                    endpoint, 
+                    json=payload, 
+                    headers={"Content-Type": "application/json"},
+                    timeout=5
+                )
+                response.raise_for_status()
+                data = response.json()
+                answer = data["choices"][0]["message"]["content"]
+                return answer
+            except requests.exceptions.RequestException:
+                continue
+                
+        print("Foundry Local veya alternatif LLM sunucularına erişilemedi.")
+        return None
+
 
 
 if __name__ == "__main__":

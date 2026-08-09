@@ -10,7 +10,8 @@ def test_foundry_client_initialization():
 def test_foundry_client_connection_error_fallback():
     client = FoundryClient(base_url="http://invalid-localhost-port-99999/v1")
     answer = client.generate_answer("System prompt", "Context", "Query")
-    assert "bağlanamadığım için yanıt üretemiyorum" in answer
+    assert answer is None
+
 
 def test_foundry_client_successful_response():
     client = FoundryClient()
