@@ -1,0 +1,46 @@
+# Finansal Temel Kavramlar ve Yatırım Rehberi
+
+## 1. Bileşik Faiz Nedir ve Nasıl Çalışır?
+Bileşik faiz, yatırılan ana paranın üzerine kazanılan faizin de eklenerek, sonraki dönemlerde faizin de faiz getirmesi esasına dayanan bir finansal mekanizmadır. 
+Basit faizde sadece ilk yatırılan ana para üzerinden getiri sağlanırken, bileşik faizde her dönem elde edilen kar ana paraya dahil edilir ve bir sonraki dönemin faiz hesabı bu büyümüş ana para üzerinden yapılır.
+Albert Einstein tarafından "Dünyanın 8. Harikası" olarak adlandırılan bileşik faiz, uzun vadeli birikimlerde katlanarak büyüyen bir sermaye artışı sağlar.
+
+Bileşik faiz hesaplama formülü:
+A = P * (1 + r/n)^(n*t)
+Burada:
+- A: Gelecekteki toplam anapara ve faiz tutarı
+- P: Başlangıçtaki ana para tutarı
+- r: Yıllık faiz oranı (ondalık olarak)
+- n: Faizin yılda kaç kez bileşiklendirildiği (örneğin aylık ise n=12)
+- t: Yatırımın sürdüğü yıl sayısı
+
+Örnek: 100.000 TL başlangıç sermayesi %20 yıllık faiz oranıyla 5 yıl boyunca bileşik faize bırakılırsa, 5 yılın sonunda basit faize göre çok daha yüksek bir birikim seviyesine ulaşılır.
+
+## 2. Yatırım Fonu Nasıl Çalışır?
+Yatırım fonu, birden fazla yatırımcının birikimlerini bir araya getirerek oluşturduğu ortak bir para havuzudur. Bu havuz, Sermaye Piyasası Kurulu (SPK) lisanslı profesyonel portföy yöneticileri tarafından yönetilir.
+Yatırımcılar, fonun toplam değerinden kendi yatırdıkları tutar oranında "katılma payı" (pay) satın alırlar.
+
+Yatırım Fonlarının Avantajları:
+1. Profesyonel Yönetim: Piyasa takibi ve hisse/tahvil seçimi profesyoneller tarafından yapılır.
+2. Çeşitlendirme (Diversifikasyon): Küçük tutarlarla bile onlarca farklı hisse senedi, tahvil, eurobond veya emtiaya aynı anda yatırım yapılabilir. Böylece tek bir şirketin riskine maruz kalınmaz.
+3. Likidite: İstendiğinde fon payları nakde çevrilebilir (TEFAS platformu üzerinden işlem yapılır).
+4. Şeffaflık ve Denetim: Fonların portföy değerleri günlük olarak kamuya açıklanır ve Takasbank nezdinde saklanır.
+
+Yatırım Fonu Türleri:
+- Hisse Senedi Şemsiye Fonları: Portföyünün en az %80'i borsada işlem gören şirket hisselerinden oluşur.
+- Borçlanma Araçları Fonları: Devlet tahvili, özel sektör borçlanma araçları ve bono ağırlıklıdır.
+- Para Piyasası Fonları: Düşük riskli, kısa vadeli mevduat ve repo getirisi hedefleyen fonlardır.
+- Değişken ve Karma Fonlar: Varlık dağılımı piyasa koşullarına göre esnek olarak değiştirilebilen fonlardır.
+
+## 3. Temettü (Kâr Payı) Nedir?
+Temettü, bir şirketin elde ettiği yıllık net kârın bir kısmını ortaklarına (hisse senedi sahiplerine) payları oranında nakit veya bedelsiz hisse şeklinde dağıtmasıdır.
+Temettü verimi, hisse başına ödenen temettü miktarının hisse fiyatına oranıdır. Düzenli temettü ödeyen şirketler genellikle nakit akışı güçlü, olgunlaşmış ve istikrarlı şirketlerdir.
+
+## 4. Enflasyon ve Reel Getiri İlişkisi
+Finansal piyasalarda yatırımların başarısı sadece nominal getiriye göre değil, reel getiriye göre değerlendirilir.
+Reel getiri, yatırımdan elde edilen nominal getirinin enflasyon oranından arındırılmış halidir.
+
+Yaklaşık Reel Getiri Formülü:
+Reel Getiri = Nominal Getiri - Enflasyon Oranı
+
+Eğer bir yatırım yıllık %30 getiri sağlarken aynı dönemde yıllık enflasyon %40 ise, yatırımcının alım gücü %10 civarında azalmış demektir (negatif reel getiri). Bu nedenle finansal planlamada temel amaç enflasyonun üzerinde reel getiri elde etmektir.
