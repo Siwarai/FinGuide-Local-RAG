@@ -1,0 +1,39 @@
+# TEFAS ve Türkiye Yatırım Fonları Detaylı Rehberi
+
+## 1. TKM Fonu Nedir? (Tacirler Portföy Değişken Fon)
+TKM, Tacirler Portföy tarafından yönetilen **Değişken Şemsiye Fonu** türünde bir yatırım fonudur.
+- **Yatırım Stratejisi ve Varlık Dağılımı:** TKM fonu, piyasa koşullarına göre varlık dağılımını esnek biçimde değiştirebilir. Portföyünde yerli ve yabancı hisse senetleri, devlet tahvilleri, özel sektör borçlanma araçları, VİOP kontratları ve nakit benzeri kıymetler barındırabilir.
+- **Risk Düzeyi:** 7 üzerinden 6 veya 7 (Yüksek Risk Seviyesi).
+- **Kimler İçin Uygundur?** Yüksek getiri hedefleyen, piyasa dalgalanmalarından rahatsız olmayan ve orta-uzun vadeli yatırım yapmayı planlayan yatırımcılar içindir.
+- **Getiri Potansiyeli:** Boğa piyasalarında (hisse senedi yükseliş dönemlerinde) portföyündeki hisse senedi ağırlığı sayesinde çok yüksek getiriler sağlayabilir.
+
+## 2. TZL Fonu Nedir? (Tacirler Portföy Para Piyasası Fonu)
+TZL, Tacirler Portföy tarafından yönetilen **Para Piyasası Şemsiye Fonu** türünde bir yatırım fonudur.
+- **Yatırım Stratejisi ve Varlık Dağılımı:** TZL fonu, vadesine en fazla 184 gün kalmış likit ve kısa vadeli sermaye piyasası araçlarına (ters repo, mevduat, takasbank para piyasası, kısa vadeli özel sektör bonoları) yatırım yapar. Portföyün ortalama vadesi 45 günü geçemez.
+- **Risk Düzeyi:** 7 üzerinden 1 (En Düşük Risk Seviyesi).
+- **Kimler İçin Uygundur?** Anapara kaybı riski almak istemeyen, günlük likiditeye (aynı gün nakde dönebilme) ihtiyaç duyan ve birikimlerini gecelik faiz bileşik getirisiyle değerlendirmek isteyen yatırımcılar içindir.
+- **Getiri Potansiyeli:** Mevduat ve repo faiz oranlarına paralel istikrarlı, düşük ama risksiz bir getiri sunar.
+
+## 3. ZBJ Fonu Nedir? (Ziraat Portföy Borçlanma Araçları Fonu)
+ZBJ, Ziraat Portföy tarafından yönetilen **Borçlanma Araçları Şemsiye Fonu** türünde bir yatırım fonudur.
+- **Yatırım Stratejisi ve Varlık Dağılımı:** Fon portföyünün en az %80'i devamlı olarak kamu ve özel sektör borçlanma araçlarına (Devlet Tahvili, Hazine Bonosu, Özel Sektör Tahvili) yatırılır.
+- **Risk Düzeyi:** 7 üzerinden 3 veya 4 (Orta Düzey Risk).
+- **Kimler İçin Uygundur?** Faiz oranlarındaki düşüş trendlerinden yararlanmak isteyen ve mevduat üzerinde sabit getirili menkul kıymet kazancı hedefleyen yatırımcılar içindir.
+- **Getiri Potansiyeli:** Merkez Bankası faiz indirim döngülerine girdiğinde tahvil fiyatları yükseldiği için ekstra sermaye kazancı sağlar.
+
+## 4. TKM, TZL ve ZBJ Fonlarının Karşılaştırması
+
+| Özellik | TKM (Değişken Fon) | TZL (Para Piyasası Fonu) | ZBJ (Borçlanma Araçları Fonu) |
+| :--- | :--- | :--- | :--- |
+| **Yatırım Türü** | Esnek / Hisse & Tahvil Karma | Kısa Vadeli Mevduat & Repo | Devlet & Özel Sektör Tahvili |
+| **Risk Profili** | Yüksek (Risk 6-7) | Çok Düşük (Risk 1) | Orta (Risk 3-4) |
+| **Valör (Nakit Dönüşü)** | T+1 veya T+2 (İşlem sonrası 1-2 gün) | T+0 (Aynı gün nakde geçer) | T+1 (Ertesi gün nakde geçer) |
+| **Piyasa Koşulu** | Yükselen Borsa Trendi | Yüksek Yıllık Faiz & Belirsizlik | Faiz İndirim Dönemleri |
+
+## 5. Hangi Fon En Çok Kazandırır? (Getiri Analizi)
+"Hangi fon en çok kazandırır?" sorusunun yanıtı **piyasa konjonktürüne ve yatırım dönemine** bağlıdır:
+1. **Borsa Yükseliş Trendindeyse (Boğa Piyasası):** **TKM Fonu**, bünyesindeki hisse senedi ve dinamik varlık yönetimi sayesinde TZL ve ZBJ'ye kıyasla açık ara **en yüksek getiriyi** sunma potansiyeline sahiptir.
+2. **Yüksek Faiz ve Dalgalı Piyasa Döneminde:** **TZL Fonu**, sıfıra yakın risk ile günlük bileşik faiz kazancı sağlar ve piyasa düşüşlerinde kaybettirmez.
+3. **Faiz İndirim Döneminde:** **ZBJ Fonu**, tahvil faizlerinin düşmesiyle birlikte sermaye kazancı sağlayarak TZL'nin (mevduatın) üzerinde performans gösterir.
+
+**Özet Tavsiye:** En yüksek getiri potansiyeli risk ile doğrudan orantılıdır. Yüksek getiri için TKM, tam güvenlik ve günlük likidite için TZL, sabit getirili sermaye kazancı için ZBJ fonu tercih edilir.
