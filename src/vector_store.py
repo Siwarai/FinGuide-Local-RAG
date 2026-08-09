@@ -21,3 +21,11 @@ class VectorStore:
             query_embeddings=query_embeddings,
             n_results=n_results
         )
+
+    def count(self):
+        return self.collection.count()
+
+    def delete_documents(self, ids):
+        return self.collection.delete(ids=ids)
+
+

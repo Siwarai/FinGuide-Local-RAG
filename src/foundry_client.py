@@ -1,13 +1,21 @@
 import requests
 import json
-from src.config import LLM_MODEL
+from src.config import LLM_MODEL, FOUNDRY_BASE_URL
 
 class FoundryClient:
-    def __init__(self, base_url="http://localhost:8000/v1"):
+    def __init__(self, base_url=FOUNDRY_BASE_URL):
         # Microsoft Foundry Local veya OpenAI uyumlu yerel sunucu adresi
         self.base_url = base_url
         self.model = LLM_MODEL
         
+    def is_available(self) -> bool:
+        """Sunucunun erişilebilir olup olmadığını kontrol eder."""
+        try:
+            res = requests.get(f"{self.base_url}/models", timeout=3)
+            return res.status_code == 200
+        except Exception:
+            return False
+
     def generate_answer(self, system_prompt, context, query):
         """
         Retriever'dan gelen bağlamı (context) ve kullanıcı sorusunu (query) kullanarak
@@ -32,7 +40,8 @@ class FoundryClient:
             response = requests.post(
                 endpoint, 
                 json=payload, 
-                headers={"Content-Type": "application/json"}
+                headers={"Content-Type": "application/json"},
+                timeout=15
             )
             response.raise_for_status()
             data = response.json()
@@ -44,6 +53,7 @@ class FoundryClient:
         except requests.exceptions.RequestException as e:
             print(f"Foundry Local API Bağlantı Hatası: {e}")
             return "Üzgünüm, şu anda yerel model sunucusuna (Foundry) bağlanamadığım için yanıt üretemiyorum."
+
 
 if __name__ == "__main__":
     # Test amaçlı
