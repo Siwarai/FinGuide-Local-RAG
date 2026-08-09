@@ -1,5 +1,12 @@
+import os
+import sys
+
+# Kök dizini sys.path'e ekle (IDE/Linter ve import sorunlarını önlemek için)
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+
 import streamlit as st
 from src.rag import RAGPipeline
+
 
 # -----------------------------------------------------------------------------
 # Sayfa Konfigürasyonu & Başlık Yapılandırması
