@@ -5,7 +5,8 @@ import sys
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
 import streamlit as st
-from src.rag import RAGPipeline
+from src.rag import RAGPipeline  # pyrefly: ignore [missing-import]
+
 
 
 # -----------------------------------------------------------------------------
