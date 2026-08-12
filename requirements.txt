@@ -4,3 +4,4 @@ sentence-transformers
 pypdf
 pytest
 pytest-cov
+torchvision

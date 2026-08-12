@@ -1,15 +1,23 @@
 import argparse
 from src.retriever import Retriever  # pyrefly: ignore [missing-import]
 from src.foundry_client import FoundryClient  # pyrefly: ignore [missing-import]
-
+from src.youtube_recommender import YouTubeRecommender  # pyrefly: ignore [missing-import]
 from src.config import FOUNDRY_BASE_URL  # pyrefly: ignore [missing-import]
 
 # FR-14 & NFR-03: Deterministik güvenli fallback mesajı
 FALLBACK_MESSAGE = "Üzgünüm, bilgi tabanımda bu soruya yanıt verecek yeterli finansal kaynak bulamadım."
 
-SYSTEM_PROMPT = """Sen FinGuide adında uzman bir finansal asistansın.
-Görevin, yalnızca sana verilen bağlam (context) bilgilerini kullanarak kullanıcının finansal sorularını doğru, net ve anlaşılır bir şekilde cevaplamaktır.
-Sana verilen bağlam içerisinde cevabı bulunmayan sorular için uydurma bilgiler üretme, sadece verilen kaynaklara sadık kal."""
+SYSTEM_PROMPT = """Sen FinGuide AI adında profesyonel, uzman bir finansal asistansın.
+Görevin, sana verilen bağlam (context) bilgilerini inceleyerek kullanıcının sorusunu son derece detaylı, anlaşılır, yapılı ve profesyonel bir şekilde cevaplamaktır.
+
+Yanıtını verirken mümkün olduğunca şu yapıyı kullan:
+1. 📌 **Temel Tanım & Özet:** Konunun kısa ve anlaşılır tanımı.
+2. 🔍 **Detaylı Açıklama & İşleyiş:** Konunun alt detayları, nasıl çalıştığı ve mekanizması.
+3. 💡 **Önemli Kavramlar & Metrikler:** İlgili kritik finansal terimler veya formüller (varsa).
+4. 📊 **Pratik Senaryo / Örnek:** Konuyu netleştirecek kısa bir finansal uygulama örneği.
+5. ⚠️ **Dikkat Edilmesi Gerekenler & Riskler:** Kullanıcının bilmesi gereken riskler veya tavsiyeler.
+
+Sana verilen bağlam içerisinde cevabı bulunmayan konular için uydurma bilgi üretme, sadece verilen kaynak metinlerine sadık kal."""
 
 class RAGPipeline:
     def __init__(self, base_url=FOUNDRY_BASE_URL):
@@ -18,17 +26,22 @@ class RAGPipeline:
         
     def answer_question(self, query: str, use_llm: bool = True) -> dict:
         """
-        Kullanıcı sorusunu alır, veritabanından ilgili metinleri çeker ve LLM ile yanıt üretir.
+        Kullanıcı sorusunu alır, veritabanından ilgili metinleri çeker, LLM ile zengin yanıt üretir
+        ve ilgili YouTube eğitici videolarını önerir.
         """
         # 1. Retriever ile ilgili sonuçları getir
         retrieved_results = self.retriever.retrieve(query)
+        
+        # YouTube video önerilerini sorgu bazlı getir
+        youtube_videos = YouTubeRecommender.get_recommendations(query)
         
         # FR-14 & NFR-03 (Kritik Fallback): Eğer yeterli kaynak bulunamadıysa LLM'i ÇAĞIRMA
         if not retrieved_results:
             return {
                 "answer": FALLBACK_MESSAGE,
                 "sources": [],
-                "has_context": False
+                "has_context": False,
+                "youtube_videos": []
             }
             
         # FR-12: Kullanılan kaynakların ve skorların hazırlanması
@@ -49,7 +62,8 @@ class RAGPipeline:
             return {
                 "answer": f"[LLM Devre Dışı] Bulunan Bağlam:\n{context_text}",
                 "sources": sources_info,
-                "has_context": True
+                "has_context": True,
+                "youtube_videos": youtube_videos
             }
             
         # 2. FoundryClient ile LLM yanıtı üret
@@ -67,25 +81,30 @@ class RAGPipeline:
         return {
             "answer": answer,
             "sources": sources_info,
-            "has_context": True
+            "has_context": True,
+            "youtube_videos": youtube_videos
         }
 
     def _generate_smart_extraction(self, retrieved_results: list, query: str) -> str:
         """
         Yerel LLM sunucusu çevrimdışı olduğunda, bulunan en alakalı kaynak parçalarını (chunk)
-        süzerek şablon tabanlı akıllı ve anlamlı bir yanıt (Graceful Fallback / Smart Extraction) oluşturur.
+        süzerek şablon tabanlı akıllı ve anlamlı bir detaylı yanıt (Graceful Fallback / Smart Extraction) oluşturur.
         """
         top_result = retrieved_results[0]
         top_chunk = top_result["chunk"].strip()
         top_source = top_result["metadata"].get("source", "Finansal Bilgi Tabanı Dokümanı")
         top_score = top_result["score"] * 100
 
+        all_chunks = "\n\n".join([f"• {r['chunk'].strip()}" for r in retrieved_results[:3]])
+
         formatted_answer = (
-            f"### **Finansal Bilgi Tabanı Doğrudan Yanıtı** *(Akıllı Bağlam Süzgeci)*\n\n"
+            f"### 📌 **Temel Finansal Bilgi Tabanı Yanıtı** *(Akıllı Bağlam Süzgeci)*\n\n"
             f"{top_chunk}\n\n"
+            f"### 🔍 **Öne Çıkan İlgili Doküman Detayları**\n"
+            f"{all_chunks}\n\n"
             f"---\n"
-            f"*Not: Yerel LLM sunucu bağlantısı çevrimdışı olduğu için bu yanıt, `{top_source}` dokümanından "
-            f"**%{top_score:.1f}** benzerlik skoru ile doğrudan süzülerek sunulmuştur.*"
+            f"*💡 **Not:** Yerel LLM bağlantısı çevrimdışı olduğu için bu içerik, `{top_source}` dokümanından "
+            f"**%{top_score:.1f}** maksimum benzerlik skoru ile doğrudan süzülerek sunulmuştur.*"
         )
         return formatted_answer
 
@@ -113,5 +132,11 @@ if __name__ == "__main__":
         print("\nKULLANILAN KAYNAKLAR VE SKORLAR:")
         for idx, src in enumerate(result["sources"], 1):
             print(f"[{idx}] Kaynak Dosya: {src['source']} | Benzerlik Skoru: {src['score']:.4f}")
+    
+    if result.get("youtube_videos"):
+        print("\nÖNERİLEN YOUTUBE VİDEOLARI:")
+        for vid in result["youtube_videos"]:
+            print(f"🎥 {vid['title']} - {vid['embed_url']}")
     else:
         print("\nHiçbir yeterli kaynak bulunamadı (Deterministic Fallback Tetiklendi).")
+
