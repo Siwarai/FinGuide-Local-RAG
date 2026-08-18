@@ -41,7 +41,7 @@ class RAGPipeline:
                 "answer": FALLBACK_MESSAGE,
                 "sources": [],
                 "has_context": False,
-                "youtube_videos": []
+                "youtube_videos": youtube_videos
             }
             
         # FR-12: Kullanılan kaynakların ve skorların hazırlanması
