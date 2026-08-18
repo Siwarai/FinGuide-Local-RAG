@@ -1,5 +1,5 @@
 """
-FinGuide AI - YouTube Eğitici Video Öneri Modülü
+Finans Danışmanım AI - YouTube Eğitici Video Öneri Modülü
 Kullanıcı sorularından finansal anahtar kelimeleri tespit eder ve YouTube üzerinden
 canlı arama gerçekleştirerek konuya en özel eğitici videoları getirir.
 Spesifik video bulunamadığında veya ağ hatalarında en yakın konsept videolarına yönlendirir.

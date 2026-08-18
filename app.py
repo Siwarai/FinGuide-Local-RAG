@@ -14,7 +14,7 @@ from src.youtube_recommender import YouTubeRecommender  # pyrefly: ignore [missi
 # 1. Sayfa Konfigürasyonu & Modern Tema
 # -----------------------------------------------------------------------------
 st.set_page_config(
-    page_title="FinGuide AI Pro — Akıllı Finansal Asistan",
+    page_title="Finans Danışmanım AI Pro — Akıllı Finansal Asistan",
     page_icon="📈",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -35,7 +35,7 @@ CUSTOM_CSS = """
     }
     
     /* Glassmorphism Kart Şablonu */
-    .finguide-card {
+    .finans-danismanim-card {
         background: rgba(30, 41, 59, 0.7);
         backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.08);
@@ -239,7 +239,7 @@ total_chunks = get_chunk_count()
 # 2. Yan Menü (Sidebar)
 # -----------------------------------------------------------------------------
 with st.sidebar:
-    st.markdown("<h1 style='font-size: 2.2rem; margin-bottom: 0;'>📈 FinGuide</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='font-size: 2.2rem; margin-bottom: 0;'>📈 Finans Danışmanım</h1>", unsafe_allow_html=True)
     st.markdown("<span class='badge-info'>Yerel RAG Mimarisi v2.0</span>", unsafe_allow_html=True)
     
     st.markdown("---")
@@ -271,7 +271,7 @@ with st.sidebar:
 st.markdown("""
 <div style='text-align: left; margin-bottom: 20px;'>
     <h1 style='font-size: 2.2rem; font-weight: 800; margin-bottom: 6px; background: linear-gradient(90deg, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>
-        📈 FinGuide AI Pro — Akıllı Finansal Asistan & RAG Platformu
+        📈 Finans Danışmanım AI Pro — Akıllı Finansal Asistan & RAG Platformu
     </h1>
     <p style='color: #94a3b8; font-size: 1rem; margin-top: 0;'>
         Yerel ChromaDB Bilgi Tabanı • Güvenilir Kaynak Doğrulama • Eğitici YouTube Video Kartları
@@ -371,9 +371,9 @@ with tab_assistant:
                     else:
                         # 2. Detaylı Yanıt Gösterimi
                         st.markdown("""
-                        <div class="finguide-card">
+                        <div class="finans-danismanim-card">
                             <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;'>
-                                <h3 style='margin: 0; color: #60a5fa;'>📊 FinGuide AI Profesyonel Analiz Yanıtı</h3>
+                                <h3 style='margin: 0; color: #60a5fa;'>📊 Finans Danışmanım AI Profesyonel Analiz Yanıtı</h3>
                                 <span class="badge-success">✓ Doğrulanmış Kaynaklar</span>
                             </div>
                         </div>
@@ -387,7 +387,7 @@ with tab_assistant:
                         videos = result.get("youtube_videos", [])
                         if videos:
                             st.markdown("""
-                            <div class="finguide-card" style='border-color: rgba(239, 68, 68, 0.4);'>
+                            <div class="finans-danismanim-card" style='border-color: rgba(239, 68, 68, 0.4);'>
                                 <h3 style='margin: 0 0 8px 0; color: #ef4444;'>🎥 İlgili Konu İçin Eğitici YouTube Videoları</h3>
                                 <p style='color: #cbd5e1; font-size: 0.9rem; margin-bottom: 0;'>
                                     İzlemek istediğiniz video kartının üzerine tıklayarak YouTube'da başlatabilirsiniz:
@@ -488,7 +488,7 @@ with tab_analytics:
     
     with col_a1:
         st.markdown("""
-        <div class="finguide-card">
+        <div class="finans-danismanim-card">
             <h3 style="color: #60a5fa; margin-top:0;">🗄️ Vektör Veri Tabanı Durumu</h3>
             <ul>
                 <li><b>Veri Tabanı:</b> Persistent ChromaDB</li>
@@ -503,7 +503,7 @@ with tab_analytics:
         
     with col_a2:
         st.markdown("""
-        <div class="finguide-card">
+        <div class="finans-danismanim-card">
             <h3 style="color: #a855f7; margin-top:0;">🤖 Yerel Yapay Zekâ (LLM) Ayarları</h3>
             <ul>
                 <li><b>Servis Sağlayıcı:</b> Microsoft Foundry Local</li>
@@ -540,7 +540,7 @@ with tab_analytics:
 st.markdown("""
 <div class="disclaimer-box">
     <strong>⚠️ Yasal Sorumluluk Reddi Beyanı (Financial Disclaimer):</strong><br>
-    FinGuide AI Pro tarafından sunlanan tüm yanıtlar, veriler ve analizler yalnızca genel finansal okuryazarlık ve bilgilendirme amacıyla üretilmektedir. 
+    Finans Danışmanım AI Pro tarafından sunlanan tüm yanıtlar, veriler ve analizler yalnızca genel finansal okuryazarlık ve bilgilendirme amacıyla üretilmektedir. 
     Burada yer alan hiçbir bilgi kişiye özel yatırım danışmanlığı, finansal tavsiye, alım-satım önerisi veya hukuki/mali bağlayıcılık taşımaz. 
     Finansal kararlarınızı vermeden önce yetkili bir lisanslı yatırım danışmanına veya finansal uzmana danışmanız önemle tavsiye olunur.
 </div>

@@ -1,6 +1,6 @@
-# 📈 FinGuide AI — Local Financial Literacy Assistant
+# 📈 Finans Danışmanım AI — Local Financial Literacy Assistant
 
-**FinGuide AI**, finansal okuryazarlık alanındaki soruları yerel bilgi tabanından getirilen kaynaklara dayanarak yanıtlamak için tasarlanmış Python tabanlı bir **RAG (Retrieval-Augmented Generation)** uygulamasıdır.
+**Finans Danışmanım AI**, finansal okuryazarlık alanındaki soruları yerel bilgi tabanından getirilen kaynaklara dayanarak yanıtlamak için tasarlanmış Python tabanlı bir **RAG (Retrieval-Augmented Generation)** uygulamasıdır.
 
 > ⚠️ **Temel Prensip:** Yeterli kaynak yoksa model cevap üretmez!  
 > Kullanıcının sorusu önce bilgi tabanında aranır. İlgili ve yeterli kaynaklar bulunduğunda bu içerikler yerel LLM'e bağlam olarak aktarılır. Kaynaklar yeterli değilse sistem güvenli bir **deterministik fallback** davranışı gösterir.
@@ -9,7 +9,7 @@
 
 ## 🎯 Projenin Amacı
 
-FinGuide AI'ın amacı, finansal kavramları kullanıcıya anlaşılır biçimde açıklayan ancak cevaplarını mümkün olduğunca belirli bir bilgi tabanına dayandıran yerel bir yapay zekâ asistanı geliştirmektir.
+Finans Danışmanım AI'ın amacı, finansal kavramları kullanıcıya anlaşılır biçimde açıklayan ancak cevaplarını mümkün olduğunca belirli bir bilgi tabanına dayandıran yerel bir yapay zekâ asistanı geliştirmektir.
 
 Sistem özellikle şu problemleri ortadan kaldırmayı hedefler:
 - ❌ Kaynaksız ve dayanağı olmayan LLM cevapları
@@ -104,7 +104,7 @@ Sistem özellikle şu problemleri ortadan kaldırmayı hedefler:
 ## 📁 Proje Yapısı
 
 ```text
-FinGuide-Local-RAG/
+Finans-Danismanim-RAG/
 │
 ├── app.py                      # Streamlit kullanıcı arayüzü
 ├── documents/                  # Finansal bilgi tabanı dokümanları (.txt, .pdf)
@@ -135,8 +135,8 @@ FinGuide-Local-RAG/
 
 ### 1. Repository'yi Klonlayın
 ```powershell
-git clone https://github.com/Siwarai/FinGuide-Local-RAG.git
-cd FinGuide-Local-RAG
+git clone https://github.com/Siwarai/Finans-Danismanim-RAG.git
+cd Finans-Danismanim-RAG
 ```
 
 ### 2. Sanal Ortam (Virtual Environment) Oluşturun ve Aktifleştirin
@@ -253,7 +253,7 @@ python -m pytest --cov=src --cov-report=term-missing
 
 ## 🔒 Gizlilik ve Güvenlik
 
-- **%100 Yerel Çalışma:** FinGuide AI yerel çalışma prensibiyle tasarlanmıştır.
+- **%100 Yerel Çalışma:** Finans Danışmanım AI yerel çalışma prensibiyle tasarlanmıştır.
 - **Veri Gizliliği:** Dokümanlar ChromaDB üzerinde yerel olarak indekslenir, tüm sorgular ve LLM yanıtları cihaz üzerinde işlenir. Bulut servislerine veri aktarılmaz.
 - **Model Önbelleği:** Embedding modeli ilk kurulumda Hugging Face Hub üzerinden indirilir ve yerel önbelleğe alınır.
 
@@ -261,7 +261,7 @@ python -m pytest --cov=src --cov-report=term-missing
 
 ## ⚠️ Finansal Sorumluluk Reddi Beyanı (Disclaimer)
 
-FinGuide AI, yalnızca finansal okuryazarlık, eğitim ve genel bilgilendirme amacıyla geliştirilmiştir. Sistem tarafından üretilen yanıtlar hiçbir koşulda kişiye özel yatırım, kredi, vergi, hukuk veya finansal danışmanlık tavsiyesi olarak değerlendirilemez.
+Finans Danışmanım AI, yalnızca finansal okuryazarlık, eğitim ve genel bilgilendirme amacıyla geliştirilmiştir. Sistem tarafından üretilen yanıtlar hiçbir koşulda kişiye özel yatırım, kredi, vergi, hukuk veya finansal danışmanlık tavsiyesi olarak değerlendirilemez.
 
 ---
 

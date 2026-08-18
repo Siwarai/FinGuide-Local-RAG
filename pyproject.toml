@@ -1,7 +1,7 @@
 [project]
-name = "FinGuide-Local-RAG"
+name = "Finans-Danismanim-RAG"
 version = "0.1.0"
-description = "Local Financial RAG Assistant"
+description = "Local Financial RAG Assistant (Finans Danışmanım)"
 readme = "README.md"
 requires-python = ">=3.10"
 

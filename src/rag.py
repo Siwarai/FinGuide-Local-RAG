@@ -7,7 +7,7 @@ from src.config import FOUNDRY_BASE_URL  # pyrefly: ignore [missing-import]
 # FR-14 & NFR-03: Deterministik güvenli fallback mesajı
 FALLBACK_MESSAGE = "Üzgünüm, bilgi tabanımda bu soruya yanıt verecek yeterli finansal kaynak bulamadım."
 
-SYSTEM_PROMPT = """Sen FinGuide AI adında profesyonel, uzman bir finansal asistansın.
+SYSTEM_PROMPT = """Sen Finans Danışmanım AI adında profesyonel, uzman bir finansal asistansın.
 Görevin, sana verilen bağlam (context) bilgilerini inceleyerek kullanıcının sorusunu son derece detaylı, anlaşılır, yapılı ve profesyonel bir şekilde cevaplamaktır.
 
 Yanıtını verirken mümkün olduğunca şu yapıyı kullan:
@@ -112,7 +112,7 @@ class RAGPipeline:
 
 if __name__ == "__main__":
     # FR-17: CLI Test Desteği
-    parser = argparse.ArgumentParser(description="FinGuide RAG Pipeline CLI Test Aracı")
+    parser = argparse.ArgumentParser(description="Finans Danışmanım RAG Pipeline CLI Test Aracı")
     parser.add_argument("query", type=str, help="Sorulacak finansal soru")
     parser.add_argument("--use-llm", action="store_true", help="Yerel LLM modelini çağırarak gerçek yanıt üretir")
     

@@ -6,7 +6,7 @@ class VectorStore:
         DB_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "chroma_db")
         print(f"Initializing ChromaDB at {DB_DIR}")
         self.client = chromadb.PersistentClient(path=DB_DIR)
-        self.collection = self.client.get_or_create_collection(name="finguide_docs")
+        self.collection = self.client.get_or_create_collection(name="finans_danismanim_docs")
 
     def add_documents(self, documents, embeddings, metadatas, ids):
         self.collection.add(
